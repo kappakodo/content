@@ -24,4 +24,4 @@ jobs:
         pip install pyyaml pillow python-frontmatter
 
     - name: Run compressor
-      run: python content/compressor.py
+      run: python compressor.py
