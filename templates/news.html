@@ -1,3 +1,224 @@
-<main>
-    <section id="article-content-placeholder"></section>
-</main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>κkodo</title>
+    <style>
+        :root {
+            --bg-color: #000000; /* Pure black background */
+            --text-color: #ffffff; /* Pure white text */
+            --accent-color: #cccccc; /* Light gray for accents */
+            --glass-bg: rgba(255, 255, 255, 0.05); /* Subtle glass effect */
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --placard-width: 300px; /* Fixed width for article image */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1509023464722-18d996393ca8?auto=format&fit=crop&w=1920&q=80'); /* Japanese temple */
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            letter-spacing: 2px;
+            text-transform: none; /* Keep κkodo as is */
+            font-weight: 700;
+        }
+
+        header h1::after {
+            content: 'かっぱ鼓動';
+            display: block;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: var(--text-color);
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .article-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        #article-title {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        #article-date {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        #article-author {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        #article-content-placeholder {
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+
+        #article-content-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        #article-content-placeholder h1, 
+        #article-content-placeholder h2, 
+        #article-content-placeholder h3 {
+            color: var(--text-color);
+            margin: 1rem 0;
+        }
+
+        #article-content-placeholder p {
+            margin-bottom: 1rem;
+        }
+
+        #article-content-placeholder a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        #article-content-placeholder a:hover {
+            color: var(--text-color);
+        }
+
+        .article-image {
+            width: var(--placard-width);
+            aspect-ratio: 3 / 4; /* 3:4 aspect ratio */
+            object-fit: cover;
+            filter: brightness(80%);
+            border-radius: 8px;
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid var(--glass-border);
+            padding: 1rem;
+            text-align: center;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header h1::after {
+                font-size: 1rem;
+            }
+
+            nav a {
+                margin: 0 0.75rem;
+                font-size: 1rem;
+            }
+
+            #article-title {
+                font-size: 1.6rem;
+            }
+
+            .article-container {
+                padding: 1.5rem;
+            }
+
+            .article-image {
+                width: 100%;
+                max-width: var(--placard-width);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>κkodo</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/news/">News</a>
+            <a href="/reviews/">Reviews</a>
+        </nav>
+    </header>
+    <main>
+        <div class="article-container">
+            <h1 id="article-title"></h1>
+            <time id="article-date"></time>
+            <p id="article-author"></p>
+            <img id="article-image" class="article-image" src="" alt="Article Image" style="display: none;">
+            <div id="article-content-placeholder"></div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 kappakodo</p>
+    </footer>
+</body>
+</html>

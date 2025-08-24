@@ -1,3 +1,246 @@
-<main>
-    <section id="article-content-placeholder"></section>
-</main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>κkodo</title>
+    <style>
+        :root {
+            --bg-color: #000000; /* Pure black background */
+            --text-color: #ffffff; /* Pure white text */
+            --accent-color: #cccccc; /* Light gray for accents */
+            --glass-bg: rgba(255, 255, 255, 0.05); /* Subtle glass effect */
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --placard-width: 300px; /* Fixed width for placards */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1509023464722-18d996393ca8?auto=format&fit=crop&w=1920&q=80'); /* Japanese temple */
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.5rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            letter-spacing: 2px;
+            text-transform: none; /* Keep κkodo as is */
+            font-weight: 700;
+        }
+
+        header h1::after {
+            content: 'かっぱ鼓動';
+            display: block;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        nav {
+            margin-top: 1rem;
+        }
+
+        nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            color: var(--text-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-color);
+            margin: 0.5rem auto;
+        }
+
+        .articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(var(--placard-width), 1fr));
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .article-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: var(--placard-width);
+            aspect-ratio: 3 / 4; /* 3:4 aspect ratio */
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 60%; /* Image takes upper portion of 3:4 ratio */
+            object-fit: cover;
+            filter: brightness(80%);
+        }
+
+        .article-card-content {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .article-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .article-card p {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+
+        .article-card a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(8px);
+            border-top: 1px solid var(--glass-border);
+            padding: 1rem;
+            text-align: center;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header h1::after {
+                font-size: 1rem;
+            }
+
+            nav a {
+                margin: 0 0.75rem;
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .articles {
+                grid-template-columns: 1fr;
+            }
+
+            .article-card {
+                width: 100%;
+                max-width: var(--placard-width);
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>κkodo</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/news/">News</a>
+            <a href="/reviews/">Reviews</a>
+        </nav>
+    </header>
+    <main>
+        <h2>All Reviews</h2>
+        <div id="article-content-placeholder" class="articles"></div>
+    </main>
+    <footer>
+        <p>&copy; 2025 kappakodo</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.0.0/lib/marked.min.js"></script>
+    <script>
+        async function loadReviews() {
+            const url = `https://cdn.jsdelivr.net/gh/kappakodo/content@main/compressed/reviews_manifest.json`;
+            const defaultImage = 'https://images.unsplash.com/photo-1509023464722-18d996393ca8?auto=format&fit=crop&w=600&q=80'; // Japanese temple
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Failed to load reviews');
+                const posts = await response.json();
+                const list = document.getElementById('article-content-placeholder');
+                list.innerHTML = posts.map(p => `
+                    <div class="article-card">
+                        <img src="${p.coverImage || defaultImage}" alt="${p.title}">
+                        <div class="article-card-content">
+                            <h3><a href="/reviews/${p.id}">${p.title}</a></h3>
+                            <p>${new Date(p.date).toLocaleDateString()}</p>
+                        </div>
+                    </div>
+                `).join('');
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('article-content-placeholder').innerHTML = '<p>Failed to load reviews</p>';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', loadReviews);
+    </script>
+</body>
+</html>
